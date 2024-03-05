@@ -1,0 +1,180 @@
+CREATE TABLE Venda (
+    idVenda INTEGER PRIMARY KEY,
+    idCliente INTEGER,
+    idLivro INTEGER,
+    quantidade INTEGER,
+    idVendedor INTEGER,
+    idEndereco INTEGER,
+    data DATE
+);
+
+CREATE TABLE Cliente (
+    idCliente INTEGER PRIMARY KEY,
+    idContato INTEGER,
+    nome VARCHAR,
+    dataNascimento DATE,
+    genero VARCHAR,
+    status BOOLEAN
+);
+
+CREATE TABLE Vendedor (
+    idVendedor INTEGER PRIMARY KEY,
+    nome VARCHAR,
+    idContato INTEGER,
+    genero VARCHAR,
+    dataNascimento VARCHAR
+);
+
+CREATE TABLE Livro (
+    idLivro INTEGER PRIMARY KEY,
+    titulo VARCHAR,
+    autor VARCHAR,
+    classificacao INTEGER,
+    generoLiterario VARCHAR,
+    idEditora INTEGER,
+    preco FLOAT,
+    dataLancamento DATE
+);
+
+CREATE TABLE Editora (
+    nome VARCHAR,
+    fundacao DATE,
+    idEditora INTEGER PRIMARY KEY
+);
+
+CREATE TABLE Endereco (
+    idEndereco INTEGER PRIMARY KEY,
+    rua VARCHAR,
+    numero INTEGER,
+    complemtento VARCHAR,
+    bairro VARCHAR,
+    cidade VARCHAR,
+    cep VARCHAR
+);
+
+CREATE TABLE Contato (
+    idContato INTEGER PRIMARY KEY,
+    email VARCHAR,
+    telefone VARCHAR
+);
+
+CREATE TABLE Contem (
+    fk_Livro_idLivro INTEGER,
+    fk_Venda_idVenda INTEGER
+);
+
+CREATE TABLE Fornece (
+    fk_Editora_idEditora INTEGER,
+    fk_Livro_idLivro INTEGER
+);
+
+CREATE TABLE Realiza (
+    fk_Vendedor_idVendedor INTEGER,
+    fk_Venda_idVenda INTEGER
+);
+
+CREATE TABLE Possui (
+    fk_Endereco_idEndereco INTEGER,
+    fk_Venda_idVenda INTEGER
+);
+
+CREATE TABLE Participa (
+    fk_Cliente_idCliente INTEGER,
+    fk_Venda_idVenda INTEGER
+);
+
+CREATE TABLE Tem (
+    fk_Contato_idContato INTEGER,
+    fk_Cliente_idCliente INTEGER
+);
+
+CREATE TABLE tem (
+    fk_Vendedor_idVendedor INTEGER,
+    fk_Contato_idContato INTEGER
+);
+ 
+ALTER TABLE Venda ADD CONSTRAINT FK_Venda_2
+    FOREIGN KEY (idCliente???, idLivro???, idVendedor???, idEndereco???)
+    REFERENCES ??? (???);
+ 
+ALTER TABLE Cliente ADD CONSTRAINT FK_Cliente_2
+    FOREIGN KEY (idContato???)
+    REFERENCES ??? (???);
+ 
+ALTER TABLE Vendedor ADD CONSTRAINT FK_Vendedor_2
+    FOREIGN KEY (idContato???)
+    REFERENCES ??? (???);
+ 
+ALTER TABLE Livro ADD CONSTRAINT FK_Livro_2
+    FOREIGN KEY (idEditora???)
+    REFERENCES ??? (???);
+ 
+ALTER TABLE Contem ADD CONSTRAINT FK_Contem_1
+    FOREIGN KEY (fk_Livro_idLivro)
+    REFERENCES Livro (idLivro)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Contem ADD CONSTRAINT FK_Contem_2
+    FOREIGN KEY (fk_Venda_idVenda)
+    REFERENCES Venda (idVenda)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Fornece ADD CONSTRAINT FK_Fornece_1
+    FOREIGN KEY (fk_Editora_idEditora)
+    REFERENCES Editora (idEditora)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Fornece ADD CONSTRAINT FK_Fornece_2
+    FOREIGN KEY (fk_Livro_idLivro)
+    REFERENCES Livro (idLivro)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Realiza ADD CONSTRAINT FK_Realiza_1
+    FOREIGN KEY (fk_Vendedor_idVendedor)
+    REFERENCES Vendedor (idVendedor)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Realiza ADD CONSTRAINT FK_Realiza_2
+    FOREIGN KEY (fk_Venda_idVenda)
+    REFERENCES Venda (idVenda)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Possui ADD CONSTRAINT FK_Possui_1
+    FOREIGN KEY (fk_Endereco_idEndereco)
+    REFERENCES Endereco (idEndereco)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Possui ADD CONSTRAINT FK_Possui_2
+    FOREIGN KEY (fk_Venda_idVenda)
+    REFERENCES Venda (idVenda)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Participa ADD CONSTRAINT FK_Participa_1
+    FOREIGN KEY (fk_Cliente_idCliente)
+    REFERENCES Cliente (idCliente)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Participa ADD CONSTRAINT FK_Participa_2
+    FOREIGN KEY (fk_Venda_idVenda)
+    REFERENCES Venda (idVenda)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Tem ADD CONSTRAINT FK_Tem_1
+    FOREIGN KEY (fk_Contato_idContato)
+    REFERENCES Contato (idContato)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Tem ADD CONSTRAINT FK_Tem_2
+    FOREIGN KEY (fk_Cliente_idCliente)
+    REFERENCES Cliente (idCliente)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE tem ADD CONSTRAINT FK_tem_1
+    FOREIGN KEY (fk_Vendedor_idVendedor)
+    REFERENCES Vendedor (idVendedor)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE tem ADD CONSTRAINT FK_tem_2
+    FOREIGN KEY (fk_Contato_idContato)
+    REFERENCES Contato (idContato)
+    ON DELETE SET NULL;
