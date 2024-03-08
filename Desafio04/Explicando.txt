@@ -1,0 +1,15 @@
+O Dashboard feito foi em cima dos dados do aquivo excel DataSetRH, onde eu fiz a análise sobre os funcionários desta empresa.
+
+OBS: Quando estamos em uma tela de computador muito grande, está acontecendo um problema que os gráficos saem das posições desejadas. Junto da pasta do Desafio eu anexei uma imagem mostrando como ficou o Dashboard no meu computador. Se a tela do computador for normal e ainda estiver desalinhado os gráficos, a parte dos filtros deve estar aberta, por isso dá esse erro.
+
+1. Na parte superior do relatório temos cartões que mostram dados. O primeiro cartão mostra o Total de Funcónarios da empresa, já o segundo mostra o maior salário registrado na empresa e o último mostra a idade do funcionário mais velho.
+
+2. O primeiro gráfico que encontramos é o gráfico de colunas clusterizado que vai mostrar quantos funcionários há em cada função existente. Podemos ver que a função Cientista de Dados é a que mais tem funcionários.
+
+3. O segundo gráfico encontrado é o de barras clusterizado, onde podemos ver a quantidade de funcionários por gênero, neste gráfico é capaz de ver que há mais funcionários do gênero masculino do que do gênero feminino.
+
+4. Logo após vemos nossa segmentação de dados, que está segmentando/filtrando a partir dos anos de experiêcnia de cada funcionário.
+
+5. Mais para baixo nós encontramos um gráfico de pizza que mostra o nível de satisfação dos funcionários na empresa. Podemos ver que o nível 4 de satisfação é o com a maior quantidade de funcionários.
+
+6. E por último vemos uma tabela matriz, mostrando a média salarial e a média do valor da diária de cada funcionário por estado civil. Vemos que os funcionários divorciados possuem a maior média salarial e a maior média do valor da diária.
