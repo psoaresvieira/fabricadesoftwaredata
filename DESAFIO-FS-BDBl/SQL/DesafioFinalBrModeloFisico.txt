@@ -1,0 +1,89 @@
+/* 1ModeloLogicoDesafioFinal: */
+CREATE DATABASE sistemaEscolar
+USE sistemaEscolar
+
+
+CREATE TABLE Professor (
+    idProfessor INTEGER PRIMARY KEY NOT NULL,
+    nome VARCHAR NOT NULL,
+    estaAtuando BOOLEAN NOT NULL,
+    idade INTEGER NOT NULL
+);
+
+CREATE TABLE Aluno (
+    idAluno INTEGER PRIMARY KEY NOT NULL,
+    nome VARCHAR NOT NULL,
+    estaMatriculado BOOLEAN NOT NULL
+);
+
+CREATE TABLE Curso (
+    cargaHoraria FLOAT NOT NULL,
+    idCurso INTEGER PRIMARY KEY NOT NULL,
+    nome VARCHAR NOT NULL
+);
+
+CREATE TABLE Faculdade (
+    idFaculdade INTEGER PRIMARY KEY NOT NULL,
+    nome VARCHAR NOT NULL,
+    mensalidade FLOAT NOT NULL
+);
+
+CREATE TABLE Estuda (
+    fk_Aluno_idAluno INTEGER,
+    fk_Faculdade_idFaculdade INTEGER
+);
+
+CREATE TABLE Trabalha (
+    fk_Professor_idProfessor INTEGER,
+    fk_Faculdade_idFaculdade INTEGER
+);
+
+CREATE TABLE Ensina (
+    fk_Professor_idProfessor INTEGER,
+    fk_Curso_idCurso INTEGER
+);
+
+CREATE TABLE Matriculado (
+    fk_Curso_idCurso INTEGER,
+    fk_Aluno_idAluno INTEGER
+);
+ 
+ALTER TABLE Estuda ADD CONSTRAINT FK_Estuda_1
+    FOREIGN KEY (fk_Aluno_idAluno)
+    REFERENCES Aluno (idAluno)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Estuda ADD CONSTRAINT FK_Estuda_2
+    FOREIGN KEY (fk_Faculdade_idFaculdade)
+    REFERENCES Faculdade (idFaculdade)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Trabalha ADD CONSTRAINT FK_Trabalha_1
+    FOREIGN KEY (fk_Professor_idProfessor)
+    REFERENCES Professor (idProfessor)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Trabalha ADD CONSTRAINT FK_Trabalha_2
+    FOREIGN KEY (fk_Faculdade_idFaculdade)
+    REFERENCES Faculdade (idFaculdade)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Ensina ADD CONSTRAINT FK_Ensina_1
+    FOREIGN KEY (fk_Professor_idProfessor)
+    REFERENCES Professor (idProfessor)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Ensina ADD CONSTRAINT FK_Ensina_2
+    FOREIGN KEY (fk_Curso_idCurso)
+    REFERENCES Curso (idCurso)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Matriculado ADD CONSTRAINT FK_Matriculado_1
+    FOREIGN KEY (fk_Curso_idCurso)
+    REFERENCES Curso (idCurso)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Matriculado ADD CONSTRAINT FK_Matriculado_2
+    FOREIGN KEY (fk_Aluno_idAluno)
+    REFERENCES Aluno (idAluno)
+    ON DELETE SET NULL;
